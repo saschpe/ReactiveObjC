@@ -1,25 +1,20 @@
-// swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.8
 
 import PackageDescription
 
 let package = Package(
     name: "ReactiveObjC",
     platforms: [
-        .iOS(.v8), .macOS(.v10_10), .watchOS(.v2), .tvOS(.v9)
+        .iOS(.v12), .macOS(.v10_13), .watchOS(.v4), .tvOS(.v12)
     ],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "ReactiveObjC",
-            targets: ["ReactiveObjC"]),
+        .library(name: "ReactiveObjC", targets: ["ReactiveObjC"]),
     ],
-    dependencies: [],
     targets: [
         .target(
             name: "ReactiveObjC",
-            dependencies: [],
             cSettings: [.headerSearchPath("extobjc"),
+                        .headerSearchPath("include"),
                         .define("DTRACE_PROBES_DISABLED", to: "1")]),
     ]
 )
