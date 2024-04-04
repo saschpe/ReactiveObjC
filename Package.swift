@@ -13,8 +13,17 @@ let package = Package(
     targets: [
         .target(
             name: "ReactiveObjC",
+            publicHeadersPath: "Public",
             cSettings: [.headerSearchPath("extobjc"),
                         .headerSearchPath("include"),
                         .define("DTRACE_PROBES_DISABLED", to: "1")]),
+        .testTarget(
+            name: "ReactiveObjCUnit",
+            dependencies: [ "ReactiveObjC" ],
+            path: "Tests/Unit",
+            cSettings: [
+                .define("TARGET_OS_IOS", to: "1"),
+            ]
+        )
     ]
 )
